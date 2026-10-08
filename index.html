@@ -1,0 +1,683 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:title" content="Antonio Henrique Passos · Engenheiro de Software Backend">
+<meta property="og:description" content="Engenheiro de software backend Java e Spring com experiência em soluções empresariais: CRM em microsserviços, plataforma para provedores de internet e integrações com ERPs.">
+<title>Antonio Henrique Passos</title>
+<meta name="description" content="Engenheiro de software backend Java e Spring com experiência em soluções empresariais: CRM em microsserviços, plataforma para provedores de internet e integrações com ERPs.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@500;700;800&family=IBM+Plex+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: coluna editorial de 1080px; hero com tese e foto; seções em grade de duas colunas (rótulo à esquerda, conteúdo à direita) que viram uma coluna no celular. A arquitetura de referência fica dentro do card do CRM. */
+:root {
+  --bg: #F1F3F7;
+  --surface: #FFFFFF;
+  --ink: #111A2C;
+  --muted: #586379;
+  --line: #D6DCE6;
+  --accent: #2446CC;
+  --accent-soft: #E3E8FB;
+  --signal: #C97A06;
+  --signal-soft: #FBF0DC;
+  --signal-ink: #9C5C00;
+  --font-display: "Schibsted Grotesk", "Helvetica Neue", Arial, sans-serif;
+  --font-body: "IBM Plex Sans", "Segoe UI", Roboto, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+  --step--1: 0.8125rem;
+  --step-0: 1rem;
+  --step-1: 1.25rem;
+  --step-2: 1.625rem;
+  --step-3: 2.25rem;
+  --step-4: clamp(2.5rem, 6vw, 4.25rem);
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0C1120; --surface: #141B2D; --ink: #E6EAF2; --muted: #98A2B7; --line: #263049;
+    --accent: #8197FF; --accent-soft: #1C2650; --signal: #F0AE48; --signal-soft: #33260F; --signal-ink: #F0AE48;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0C1120; --surface: #141B2D; --ink: #E6EAF2; --muted: #98A2B7; --line: #263049;
+  --accent: #8197FF; --accent-soft: #1C2650; --signal: #F0AE48; --signal-soft: #33260F; --signal-ink: #F0AE48;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: var(--step-0);
+  line-height: 1.6;
+  margin: 0;
+  padding-inline: 20px;
+  padding-block: 0 64px;
+}
+a { color: var(--accent); text-underline-offset: 3px; }
+a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
+.wrap { max-width: 1080px; margin-inline: auto; }
+h1, h2, h3 { font-family: var(--font-display); text-wrap: balance; margin: 0; line-height: 1.1; }
+p { margin: 0; }
+.mono { font-family: var(--font-mono); }
+.label {
+  font-family: var(--font-mono);
+  font-size: var(--step--1);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+/* topo */
+.top {
+  display: flex; flex-wrap: wrap; gap: 12px 24px; justify-content: space-between; align-items: center;
+  padding-block: 20px; border-bottom: 1px solid var(--line);
+}
+.top nav { display: flex; flex-wrap: wrap; gap: 4px 20px; }
+.top nav a { color: var(--muted); text-decoration: none; font-size: 0.9375rem; }
+.top nav a:hover { color: var(--ink); }
+.brand { font-family: var(--font-mono); font-size: 0.9375rem; font-weight: 500; }
+.brand b { color: var(--accent); font-weight: 500; }
+
+/* hero */
+.hero {
+  display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 320px); gap: 72px;
+  padding-block: 64px 64px; align-items: center;
+}
+.hero h1 { font-size: var(--step-4); font-weight: 800; letter-spacing: -0.025em; }
+.hero h1 span { color: var(--accent); }
+.hero .role span { white-space: nowrap; }
+.hero .role { margin-top: 14px; font-family: var(--font-mono); font-size: 0.9375rem; color: var(--muted); }
+.hero .thesis { margin-top: 28px; font-size: var(--step-1); line-height: 1.5; max-width: 34ch; }
+.hero .thesis mark { background: var(--signal-soft); color: var(--ink); padding: 0 4px; border-radius: 3px; }
+.cta { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 32px; }
+.btn {
+  display: inline-flex; align-items: center; gap: 8px; padding: 11px 18px; border-radius: 8px;
+  font-weight: 600; font-size: 0.9375rem; text-decoration: none; border: 1px solid var(--line);
+  color: var(--ink); background: var(--surface); cursor: pointer; font-family: var(--font-body);
+}
+.btn.primary { background: var(--accent); border-color: var(--accent); color: var(--bg); }
+.btn:hover { border-color: var(--accent); }
+.email-chip {
+  display: inline-flex; align-items: center; gap: 10px; padding: 6px 6px 6px 14px; border-radius: 8px;
+  border: 1px solid var(--line); background: var(--surface); min-width: 0; max-width: 100%;
+}
+.email-chip .mono { font-size: 0.875rem; overflow-wrap: anywhere; user-select: all; }
+.copy { flex: none; font-family: var(--font-mono); font-size: 0.75rem; padding: 6px 10px; border-radius: 6px; border: 1px solid var(--line); background: var(--bg); color: var(--ink); cursor: pointer; }
+.copy:hover { border-color: var(--accent); }
+
+/* foto */
+.portrait { margin: 0 14px 14px 0; position: relative; width: calc(100% - 14px); max-width: 300px; justify-self: end; }
+.portrait::before {
+  content: ""; position: absolute; inset: 14px -14px -14px 14px; border-radius: 18px;
+  background: var(--accent-soft); border: 1px solid var(--line);
+}
+.portrait img {
+  position: relative; display: block; width: 100%; height: auto; aspect-ratio: 4 / 5; object-fit: cover;
+  border-radius: 16px; background: var(--line);
+}
+
+/* arquitetura */
+.arch { grid-column: 1 / -1; margin: 0; padding-top: 24px; border-top: 1px solid var(--line); min-width: 0; }
+.arch-head { display: flex; justify-content: space-between; gap: 8px 16px; flex-wrap: wrap; margin-bottom: 14px; }
+.arch-scroll { overflow-x: auto; }
+.arch-scroll:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 4px; }
+.arch-hint { margin-top: 8px; }
+.arch-scroll svg { display: block; width: 100%; max-width: 760px; height: auto; margin-inline: auto; }
+.arch .boundary { fill: none; stroke: var(--muted); stroke-opacity: 0.6; stroke-width: 1.2; stroke-dasharray: 3 4; }
+.arch .boundary-label { fill: var(--muted); font-family: var(--font-mono); font-size: 9px; }
+.arch .node rect { fill: var(--bg); stroke: var(--line); stroke-width: 1.2; }
+.arch .node.key rect { fill: var(--accent-soft); stroke: var(--accent); }
+.arch .node.bus rect { fill: var(--signal-soft); stroke: var(--signal); }
+.arch .node text { fill: var(--ink); font-family: var(--font-mono); font-size: 11px; }
+.arch .node text.sub { fill: var(--muted); font-size: 9.5px; }
+.arch .db { fill: none; stroke: var(--muted); stroke-width: 1.1; }
+.arch .edge { stroke: var(--muted); stroke-width: 1.2; fill: none; }
+.arch .edge.async { stroke: var(--signal); stroke-dasharray: 4 4; animation: flow 1.6s linear infinite; }
+.arch .ah { fill: var(--muted); }
+.arch .ah-async { fill: var(--signal); }
+.arch .edge-label { fill: var(--muted); font-family: var(--font-mono); font-size: 9px; }
+@keyframes flow { to { stroke-dashoffset: -16; } }
+.legend { display: flex; gap: 8px 18px; flex-wrap: wrap; margin-top: 14px; font-size: var(--step--1); color: var(--muted); }
+.legend i { display: inline-block; width: 18px; height: 0; border-top: 2px solid var(--muted); vertical-align: middle; margin-right: 6px; }
+.legend i.async { border-top: 2px dashed var(--signal); }
+.legend svg.db-key { width: 12px; height: 16px; vertical-align: middle; margin-right: 6px; fill: none; stroke: var(--muted); stroke-width: 1.1; }
+.arch figcaption { margin-top: 10px; font-size: 0.875rem; color: var(--muted); max-width: 72ch; }
+
+/* faixa de números */
+.facts {
+  display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); border-block: 1px solid var(--line);
+}
+.facts div { padding: 22px 20px; border-left: 1px solid var(--line); }
+.facts div:first-child { border-left: 0; padding-left: 0; }
+.facts strong { display: block; font-family: var(--font-display); font-size: var(--step-3); font-weight: 700; line-height: 1; }
+.facts span { display: block; margin-top: 8px; color: var(--muted); font-size: 0.9375rem; }
+
+/* seções */
+section.block { display: grid; grid-template-columns: 220px minmax(0, 1fr); gap: 32px; padding-block: 72px 0; }
+section.block > header h2 { font-size: var(--step-2); font-weight: 700; margin-top: 8px; letter-spacing: -0.01em; }
+.lede { font-size: var(--step-1); line-height: 1.5; max-width: 60ch; }
+.lede + * { margin-top: 32px; }
+
+/* soluções empresariais */
+.crm {
+  border: 1px solid var(--accent); border-radius: 14px; background: var(--surface); padding: 28px;
+  display: grid; grid-template-columns: minmax(0, 1fr); gap: 24px;
+}
+.crm h3 { font-size: var(--step-2); font-weight: 700; }
+.crm .tag { display: inline-block; font-family: var(--font-mono); font-size: var(--step--1); color: var(--signal-ink); margin-bottom: 10px; }
+.crm p { margin-top: 12px; color: var(--muted); }
+.crm ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 12px; }
+.crm li { padding-left: 18px; position: relative; }
+.crm li::before { content: ""; position: absolute; left: 0; top: 0.62em; width: 8px; height: 8px; border-radius: 2px; background: var(--accent); }
+.domains { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0; margin-top: 28px; border-block: 1px solid var(--line); }
+.domain { padding: 22px 20px; border-left: 1px solid var(--line); min-width: 0; }
+.domain:first-child { border-left: 0; padding-left: 0; }
+.domain h3 { margin: 0; font-family: var(--font-display); font-size: var(--step-1); font-weight: 700; }
+.domain p { margin-top: 8px; color: var(--muted); font-size: 0.9375rem; }
+.domain .entities { margin-top: 12px; font-family: var(--font-mono); font-size: var(--step--1); color: var(--ink); overflow-wrap: anywhere; }
+.domain .entities span { color: var(--muted); }
+
+/* competências */
+.skills { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 32px 28px; }
+.skill h3 { font-size: var(--step-1); font-weight: 700; }
+.skill p { margin-top: 8px; color: var(--muted); font-size: 0.9375rem; }
+.chips { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 12px; padding: 0; list-style: none; }
+.chips li { font-family: var(--font-mono); font-size: 0.75rem; padding: 3px 8px; border-radius: 5px; background: var(--surface); border: 1px solid var(--line); }
+
+/* projetos */
+.filters { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px; }
+.filters button {
+  font-family: var(--font-mono); font-size: var(--step--1); padding: 6px 12px; border-radius: 999px;
+  border: 1px solid var(--line); background: transparent; color: var(--muted); cursor: pointer;
+}
+.filters button[aria-pressed="true"] { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+.projects { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+.project {
+  background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 22px;
+  display: flex; flex-direction: column; gap: 10px; min-width: 0;
+}
+.project .meta { display: flex; justify-content: space-between; gap: 12px; font-family: var(--font-mono); font-size: var(--step--1); color: var(--muted); }
+.project .meta .ent { color: var(--signal-ink); }
+.project h3 { font-size: var(--step-1); font-weight: 700; }
+.project p { color: var(--muted); font-size: 0.9375rem; }
+.project .stack { font-family: var(--font-mono); font-size: 0.75rem; color: var(--ink); overflow-wrap: anywhere; }
+.project .links { margin-top: auto; padding-top: 6px; display: flex; flex-wrap: wrap; gap: 6px 16px; font-size: 0.875rem; }
+.project .private { font-family: var(--font-mono); font-size: 0.75rem; color: var(--muted); }
+
+/* experiência */
+.jobs { list-style: none; margin: 0; padding: 0; display: grid; }
+.jobs > li { display: grid; grid-template-columns: 150px minmax(0, 1fr); gap: 24px; padding-block: 24px; border-top: 1px solid var(--line); }
+.jobs > li:first-child { border-top: 0; padding-top: 0; }
+.jobs .period { font-family: var(--font-mono); font-size: var(--step--1); color: var(--accent); font-variant-numeric: tabular-nums; padding-top: 4px; }
+.jobs h3 { font-size: var(--step-1); font-weight: 700; }
+.jobs .org { margin-top: 4px; color: var(--muted); font-size: 0.9375rem; }
+.jobs .org strong { color: var(--ink); font-weight: 600; }
+.jobs ul { margin: 12px 0 0; padding: 0; list-style: none; display: grid; gap: 8px; max-width: 70ch; }
+.jobs ul li { position: relative; padding-left: 18px; }
+.jobs ul li::before { content: ""; position: absolute; left: 0; top: 0.68em; width: 8px; height: 2px; border-radius: 1px; background: var(--muted); opacity: 0.7; }
+.edu { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; margin-top: 32px; }
+.edu > div { border: 1px solid var(--line); border-radius: 12px; padding: 18px 20px; background: var(--surface); min-width: 0; }
+.edu h3 { margin-top: 8px; font-size: var(--step-0); font-weight: 700; line-height: 1.35; }
+.edu p:not(.label) { margin-top: 4px; color: var(--muted); font-size: 0.9375rem; }
+.cta-status { margin-top: 12px; color: var(--muted); font-size: 0.875rem; }
+.cta-status:empty { margin-top: 0; }
+footer.foot { margin-top: 72px; padding-top: 20px; border-top: 1px solid var(--line); color: var(--muted); font-size: var(--step--1); display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px; }
+
+@media (max-width: 900px) {
+  .hero { grid-template-columns: minmax(0, 1fr) minmax(0, 210px); gap: 32px; padding-block: 40px 48px; }
+  .portrait { max-width: 200px; width: calc(100% - 10px); margin: 0 10px 10px 0; }
+  .portrait::before { inset: 10px -10px -10px 10px; }
+  .jobs > li { grid-template-columns: minmax(0, 1fr); gap: 6px; }
+  .edu { grid-template-columns: minmax(0, 1fr); }
+  .domains { grid-template-columns: minmax(0, 1fr); }
+  .domain { padding: 18px 0; border-left: 0; border-top: 1px solid var(--line); }
+  .domain:first-child { border-top: 0; }
+}
+@media (max-width: 720px) {
+  .hero { grid-template-columns: minmax(0, 1fr); gap: 24px; }
+  .portrait { order: -1; justify-self: start; max-width: 136px; width: calc(100% - 8px); margin: 0 8px 8px 0; }
+  .portrait::before { inset: 8px -8px -8px 8px; }
+  section.block { grid-template-columns: minmax(0, 1fr); gap: 16px; padding-block: 56px 0; }
+  .skills { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .facts { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .facts div:nth-child(3) { border-left: 0; padding-left: 0; }
+  .facts div:nth-child(n+3) { border-top: 1px solid var(--line); }
+}
+@media (max-width: 640px) {
+  body { padding-inline: 16px; }
+  .crm, .projects, .skills { grid-template-columns: minmax(0, 1fr); }
+  .crm { padding: 20px; }
+  .crm .arch-scroll { margin-inline: -20px; padding-inline: 4px; }
+  .arch-scroll svg { min-width: 540px; }
+  .top nav { display: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .arch .edge.async { animation: none; }
+}
+</style>
+</head>
+<body>
+
+<div class="wrap" lang="pt-BR">
+  <header class="top">
+    <div class="brand"><b>@</b>antoniohenriquep</div>
+    <nav aria-label="Seções">
+      <a href="#solucoes">Soluções empresariais</a>
+      <a href="#experiencia">Experiência</a>
+      <a href="#competencias">Competências</a>
+      <a href="#projetos">Projetos</a>
+    </nav>
+  </header>
+
+  <main id="conteudo">
+  <section class="hero">
+    <div>
+      <p class="label">Feira de Santana, BA · Brasil</p>
+      <h1 style="margin-top:14px">Antonio Henrique<br><span>Passos</span></h1>
+      <p class="role"><span>Engenheiro de Software Backend ·</span> <span>Java &amp; Spring ·</span> <span>Microsserviços</span></p>
+      <p class="thesis">Construo os sistemas que sustentam a operação de uma empresa: <mark>CRMs</mark>, plataformas para provedores de internet e integrações com ERPs.</p>
+      <div class="cta">
+        <a class="btn cv-link" href="curriculo-antonio.pdf" download="Curriculo-Antonio.pdf" target="_blank" rel="noopener">Currículo (PDF)</a>
+        <a class="btn" href="https://github.com/antoniohenriquep" target="_blank" rel="noopener">GitHub</a>
+        <a class="btn" href="https://www.linkedin.com/in/antonio-pedreira" target="_blank" rel="noopener">LinkedIn</a>
+        <div class="email-chip">
+          <span class="mono" id="email">antoniohp.dev@gmail.com</span>
+          <button class="copy" type="button" id="copy-email" data-copy="antoniohp.dev@gmail.com" aria-label="Copiar e-mail">copiar</button>
+        </div>
+      </div>
+      <p class="cv-status cta-status" aria-live="polite"></p>
+    </div>
+
+    <figure class="portrait">
+      <img src="antonio-passos.jpg" width="640" height="800" alt="Antonio Henrique Passos sorrindo, de camisa social clara, tirando uma selfie no espelho" fetchpriority="high" decoding="async">
+    </figure>
+  </section>
+
+  <div class="facts" role="list">
+    <div role="listitem"><strong>3.000+</strong><span>clientes ativos na plataforma ACS que desenvolvi e mantive</span></div>
+    <div role="listitem"><strong>20.000+</strong><span>clientes que a arquitetura da plataforma ACS suporta</span></div>
+    <div role="listitem"><strong>5+</strong><span>anos de código no GitHub (desde 2021)</span></div>
+    <div role="listitem"><strong>45</strong><span>repositórios, 29 deles públicos</span></div>
+  </div>
+
+  <section class="block" id="solucoes">
+    <header>
+      <p class="label">Foco</p>
+      <h2>Soluções empresariais e CRM</h2>
+    </header>
+    <div>
+      <p class="lede">Sistemas que empresas usam todos os dias: o relacionamento com os clientes, a operação de provedores de internet e a troca de dados com ERPs.</p>
+
+      <article class="crm">
+        <div>
+          <span class="tag">Liderança técnica · Softplus</span>
+          <h3>CRM em microsserviços</h3>
+          <p>Liderei tecnicamente um CRM desenhado para escalar por partes: cada área do negócio vive em um serviço independente, que cresce e muda sem derrubar os outros.</p>
+        </div>
+        <figure class="arch">
+          <div class="arch-head">
+            <span class="label">Arquitetura de referência · <span style="white-space:nowrap">Spring Cloud</span></span>
+            <span class="label">nomes ilustrativos</span>
+          </div>
+          <div class="arch-scroll" tabindex="0" role="region" aria-label="Diagrama de arquitetura com rolagem horizontal">
+            <svg viewBox="0 0 560 316" role="img" aria-labelledby="arch-title" aria-describedby="arch-desc">
+              <title id="arch-title">Arquitetura de microsserviços com Spring Cloud</title>
+              <desc id="arch-desc">O cliente web ou mobile, fora da rede interna, chama o api-gateway, que valida o JWT e usa o service-registry (Eureka) para rotear até auth-service, customer-service ou order-service. Cada um desses três serviços tem o próprio banco PostgreSQL. O order-service chama o customer-service via OpenFeign. Os serviços customer-service e order-service publicam eventos no event-bus (RabbitMQ), consumidos pelo notification-service. Gateway, registry, serviços, bancos e event-bus rodam em uma rede interna do Docker Compose.</desc>
+              <defs>
+                <marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path class="ah" d="M0 0 L10 5 L0 10 z"/></marker>
+                <marker id="ah-async" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path class="ah-async" d="M0 0 L10 5 L0 10 z"/></marker>
+              </defs>
+              <rect class="boundary" x="6" y="62" width="548" height="246" rx="12"/>
+              <text class="boundary-label" x="544" y="300" text-anchor="end">rede interna · Docker Compose</text>
+
+              <!-- chamadas síncronas -->
+              <path class="edge" d="M280 46 V76" marker-end="url(#ah)"/>
+              <path class="edge" d="M190 99 H151" marker-end="url(#ah)"/>
+              <path class="edge" d="M280 120 V148" marker-end="url(#ah)"/>
+              <path class="edge" d="M280 134 H93 V148" marker-end="url(#ah)"/>
+              <path class="edge" d="M280 134 H467 V148" marker-end="url(#ah)"/>
+              <path class="edge" d="M392 173 H357" marker-end="url(#ah)"/>
+              <text class="edge-label" x="374.5" y="166" text-anchor="middle">Feign</text>
+
+              <!-- eventos -->
+              <path class="edge async" d="M280 196 V234" marker-end="url(#ah-async)"/>
+              <path class="edge async" d="M467 196 V257 H362" marker-end="url(#ah-async)"/>
+              <path class="edge async" d="M200 257 H180" marker-end="url(#ah-async)"/>
+
+              <!-- nós -->
+              <g class="node"><rect x="220" y="6" width="120" height="40" rx="6"/><text x="280" y="23" text-anchor="middle">cliente</text><text class="sub" x="280" y="37" text-anchor="middle">web · mobile</text></g>
+              <g class="node key"><rect x="190" y="78" width="180" height="42" rx="6"/><text x="280" y="96" text-anchor="middle">api-gateway</text><text class="sub" x="280" y="111" text-anchor="middle">Spring Cloud Gateway · JWT</text></g>
+              <g class="node"><rect x="18" y="78" width="131" height="42" rx="6"/><text x="83.5" y="96" text-anchor="middle">service-registry</text><text class="sub" x="83.5" y="111" text-anchor="middle">Eureka</text></g>
+
+              <g class="node"><rect x="18" y="150" width="150" height="46" rx="6"/><text x="30" y="168">auth-service</text><text class="sub" x="30" y="184">identidade · tokens</text></g>
+              <path class="db" d="M146 161 a6 2.6 0 0 0 12 0 a6 2.6 0 0 0 -12 0 v11 a6 2.6 0 0 0 12 0 v-11"><title>PostgreSQL próprio</title></path>
+              <g class="node"><rect x="205" y="150" width="150" height="46" rx="6"/><text x="217" y="168">customer-service</text><text class="sub" x="217" y="184">cadastro de clientes</text></g>
+              <path class="db" d="M333 161 a6 2.6 0 0 0 12 0 a6 2.6 0 0 0 -12 0 v11 a6 2.6 0 0 0 12 0 v-11"><title>PostgreSQL próprio</title></path>
+              <g class="node"><rect x="392" y="150" width="150" height="46" rx="6"/><text x="404" y="168">order-service</text><text class="sub" x="404" y="184">pedidos e vendas</text></g>
+              <path class="db" d="M520 161 a6 2.6 0 0 0 12 0 a6 2.6 0 0 0 -12 0 v11 a6 2.6 0 0 0 12 0 v-11"><title>PostgreSQL próprio</title></path>
+
+              <g class="node bus"><rect x="200" y="236" width="160" height="42" rx="6"/><text x="280" y="254" text-anchor="middle">event-bus</text><text class="sub" x="280" y="269" text-anchor="middle">RabbitMQ · AMQP</text></g>
+              <g class="node"><rect x="18" y="236" width="160" height="42" rx="6"/><text x="30" y="254">notification-service</text><text class="sub" x="30" y="269">e-mail · alertas</text></g>
+            </svg>
+          </div>
+          <p class="arch-hint label" hidden>← deslize para os lados →</p>
+          <div class="legend">
+            <span><i></i>HTTP síncrono (REST · Feign)</span>
+            <span><i class="async"></i>eventos assíncronos (AMQP)</span>
+            <span><svg class="db-key" viewBox="0 0 12 16" aria-hidden="true"><path d="M0 3 a6 2.6 0 0 0 12 0 a6 2.6 0 0 0 -12 0 v10 a6 2.6 0 0 0 12 0 v-10"/></svg>banco próprio (PostgreSQL)</span>
+          </div>
+          <figcaption>Gateway único que valida o token, serviços que se registram no Eureka e são encontrados pelo nome, um banco por serviço e mensageria para o que não precisa de resposta imediata.</figcaption>
+        </figure>
+      </article>
+
+      <div class="domains">
+        <div class="domain">
+          <h3>Provedores de internet</h3>
+          <p>Plataforma ACS que desenvolvi e mantive na Softplus, usada por mais de 3.000 clientes ativos e com arquitetura preparada para 20.000+.</p>
+          <p class="entities">3.000+ clientes ativos <span>// Softplus</span></p>
+        </div>
+        <div class="domain">
+          <h3>Integração com ERPs</h3>
+          <p>Integrei a plataforma aos ERPs Hubsoft e IXC com transações distribuídas, mantendo os dados consistentes entre os sistemas.</p>
+          <p class="entities">Hubsoft · IXC <span>// Softplus</span></p>
+        </div>
+        <div class="domain">
+          <h3>Automação de rotinas de TI</h3>
+          <p>Robô que coleta os contadores de todas as impressoras da rede de uma instituição e entrega um relatório em PDF por setor, no lugar da coleta feita à mão.</p>
+          <p class="entities">Node · Puppeteer · PDFKit</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="experiencia">
+    <header>
+      <p class="label">Carreira</p>
+      <h2>Experiência</h2>
+    </header>
+    <div>
+      <ol class="jobs">
+        <li>
+          <p class="period">mai 2025 – mar 2026</p>
+          <div>
+            <h3>Engenheiro Backend Pleno</h3>
+            <p class="org"><strong>Softplus</strong> · remoto</p>
+            <ul>
+              <li>Liderança técnica do ecossistema de CRM em microsserviços (Java e Spring Boot), com comunicação assíncrona entre os serviços via RabbitMQ.</li>
+              <li>Desenvolvimento e manutenção de uma plataforma ACS para provedores de internet, com mais de 3.000 clientes ativos e arquitetura preparada para 20.000+.</li>
+              <li>Integração com os ERPs de telecom Hubsoft e IXC, com transações distribuídas para manter os dados consistentes.</li>
+              <li>Migrações de banco com Flyway, testes unitários e de integração com JUnit e Mockito, code review e mentoria técnica do time.</li>
+            </ul>
+          </div>
+        </li>
+        <li>
+          <p class="period">set 2024 – fev 2025</p>
+          <div>
+            <h3>Estágio em Desenvolvimento Backend (Bolsista AWS)</h3>
+            <p class="org"><strong>Compass.UOL</strong> · remoto</p>
+            <ul>
+              <li>Desenvolvimento de APIs REST com Spring Boot e projeto da arquitetura do backend de um sistema de gestão de bibliotecas.</li>
+              <li>Provisionamento de infraestrutura na AWS (EC2, S3 e RDS) para hospedar as aplicações.</li>
+              <li>Trabalho em Scrum, com entregas contínuas e documentação técnica.</li>
+            </ul>
+          </div>
+        </li>
+        <li>
+          <p class="period">mar 2024 – mai 2025</p>
+          <div>
+            <h3>Analista de Suporte Técnico II</h3>
+            <p class="org"><strong>Liga Álvaro Bahia Contra Mortalidade Infantil</strong> · Feira de Santana, BA</p>
+            <ul>
+              <li>Suporte avançado aos sistemas hospitalares MV e Tasy e ao GLPI (chamados de TI), mantendo-os disponíveis para o corpo clínico.</li>
+              <li>Automação de processos internos com scripts e consultas SQL.</li>
+              <li>Resolução de incidentes de infraestrutura e software, reduzindo o tempo de inatividade.</li>
+            </ul>
+          </div>
+        </li>
+      </ol>
+
+      <div class="edu">
+        <div>
+          <p class="label">Formação</p>
+          <h3>Bacharelado em Engenharia de Computação</h3>
+          <p>Universidade Salvador (UNIFACS)<br><span style="white-space: nowrap">fev 2020 – dez 2026 (previsão)</span></p>
+        </div>
+        <div>
+          <p class="label">Idiomas</p>
+          <h3>Português nativo&nbsp;· Inglês avançado</h3>
+          <p>Inglês para leitura técnica e conversação profissional</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="block" id="competencias">
+    <header>
+      <p class="label">Stack</p>
+      <h2>Competências técnicas</h2>
+    </header>
+    <div class="skills">
+      <div class="skill">
+        <h3>Arquitetura</h3>
+        <p>Microsserviços, DDD com contextos delimitados e Clean Architecture, com regras de dependência verificadas por testes.</p>
+        <ul class="chips"><li>Microsserviços</li><li>DDD</li><li>Clean Architecture</li><li>SOLID</li><li>Design Patterns</li><li>ArchUnit</li></ul>
+      </div>
+      <div class="skill">
+        <h3>Java &amp; Spring</h3>
+        <p>Java 8, 17 e 21, Spring Boot até a 4.x, Spring Cloud e APIs REST documentadas.</p>
+        <ul class="chips"><li>Java 8/17/21</li><li>Spring Boot</li><li>Spring Cloud</li><li>Hibernate</li><li>OpenFeign</li><li>OpenAPI</li></ul>
+      </div>
+      <div class="skill">
+        <h3>Dados e mensageria</h3>
+        <p>Modelagem relacional, cache, migrações versionadas e comunicação assíncrona entre serviços.</p>
+        <ul class="chips"><li>PostgreSQL</li><li>SQL Server</li><li>MySQL</li><li>MongoDB</li><li>Redis</li><li>RabbitMQ</li><li>Flyway</li></ul>
+      </div>
+      <div class="skill">
+        <h3>Cloud e DevOps</h3>
+        <p>Ambientes reproduzíveis com Docker, entrega contínua e aplicações hospedadas na AWS.</p>
+        <ul class="chips"><li>Docker</li><li>Compose</li><li>AWS EC2 · S3 · RDS</li><li>CI/CD</li><li>Linux</li><li>Actuator</li></ul>
+      </div>
+      <div class="skill">
+        <h3>Segurança e qualidade</h3>
+        <p>Spring Security com JWT (OAuth2 Resource Server), code review e testes unitários e de integração.</p>
+        <ul class="chips"><li>Spring Security</li><li>JWT</li><li>OAuth2 Resource Server</li><li>TDD</li><li>JUnit</li><li>Mockito</li></ul>
+      </div>
+      <div class="skill">
+        <h3>Outras stacks</h3>
+        <p>C# com .NET Core, Node.js com TypeScript, apps React Native e PWA em React.</p>
+        <ul class="chips"><li>C# .NET Core</li><li>Node.js</li><li>TypeScript</li><li>React Native</li><li>React</li></ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="projetos">
+    <header>
+      <p class="label">Código</p>
+      <h2>Projetos</h2>
+    </header>
+    <div>
+      <div class="filters" role="group" aria-label="Filtrar projetos">
+        <button type="button" id="f-all" data-f="all" aria-pressed="true">todos</button>
+        <button type="button" id="f-ent" data-f="ent" aria-pressed="false">empresarial</button>
+        <button type="button" id="f-java" data-f="java" aria-pressed="false">java</button>
+        <button type="button" id="f-node" data-f="node" aria-pressed="false">node</button>
+        <button type="button" id="f-mobile" data-f="mobile" aria-pressed="false">mobile</button>
+      </div>
+      <div class="projects" id="projects">
+        <article class="project" data-tags="java">
+          <div class="meta"><span>2026 · em desenvolvimento</span><span>Java</span></div>
+          <h3>GymTracker API + Web</h3>
+          <p>Plataforma de periodização de treinos de powerlifting com três contextos delimitados (DDD), testes de domínio e regras de arquitetura verificadas com ArchUnit. PWA mobile-first em React.</p>
+          <p class="stack">Java 21 · Spring Boot 4 · PostgreSQL · Flyway · Spring Security/JWT · Docker · React 19</p>
+          <div class="links"><span class="private">repositório privado</span></div>
+        </article>
+        <article class="project" data-tags="java">
+          <div class="meta"><span>2026</span><span>Java</span></div>
+          <h3>MyGameList</h3>
+          <p>API de listas de jogos com autenticação JWT e integração com a API externa RAWG via OpenFeign.</p>
+          <p class="stack">Spring Boot · Spring Security · OpenFeign · PostgreSQL</p>
+          <div class="links"><span class="private">repositório privado</span></div>
+        </article>
+        <article class="project" data-tags="java ent">
+          <div class="meta"><span>2025 · <span class="ent">empresarial</span></span><span>Java</span></div>
+          <h3>Inventory API</h3>
+          <p>API Spring em camadas (controller, service, repository), com DTOs de criação, atualização e resposta convertidos por um mapper com ModelMapper.</p>
+          <p class="stack">Spring Boot · JPA · MySQL · H2 · ModelMapper</p>
+          <div class="links"><a href="https://github.com/antoniohenriquep/Inventory-API" target="_blank" rel="noopener">Ver código</a></div>
+        </article>
+        <article class="project" data-tags="node ent">
+          <div class="meta"><span>2024 · <span class="ent">empresarial</span></span><span>TypeScript</span></div>
+          <h3>Restaurante Digital API</h3>
+          <p>API em TypeScript com um controller e um service por caso de uso, middleware de autenticação JWT, senhas com bcrypt e upload de imagens de produtos com Multer.</p>
+          <p class="stack">Express · Prisma · JWT · Multer</p>
+          <div class="links"><a href="https://github.com/antoniohenriquep/Restaurante_Digital_API" target="_blank" rel="noopener">Ver código</a></div>
+        </article>
+        <article class="project" data-tags="node mobile ent">
+          <div class="meta"><span>2024 · <span class="ent">empresarial</span></span><span>JS · React Native</span></div>
+          <h3>SGE Mobile</h3>
+          <p>Protótipo: app React Native com a tela de troca de equipamento de um conjunto e API Express com os modelos Sequelize de equipamento (patrimônio, status) e conjunto.</p>
+          <p class="stack">React Native · Express · Sequelize · MariaDB</p>
+          <div class="links"><a href="https://github.com/antoniohenriquep/SGEMobile" target="_blank" rel="noopener">App</a><a href="https://github.com/antoniohenriquep/API_SGEMOBILE" target="_blank" rel="noopener">API</a></div>
+        </article>
+        <article class="project" data-tags="node">
+          <div class="meta"><span>2024 · em construção</span><span>JavaScript</span></div>
+          <h3>Finances API</h3>
+          <p>API de finanças pessoais: cadastro e login com bcrypt e JWT, e modelo de dados com receitas, despesas, parcelas e saldo mensal.</p>
+          <p class="stack">Express · Sequelize · MySQL · JWT · bcrypt</p>
+          <div class="links"><a href="https://github.com/antoniohenriquep/FinancesAPI" target="_blank" rel="noopener">Ver código</a></div>
+        </article>
+        <article class="project" data-tags="node mobile">
+          <div class="meta"><span>2024</span><span>JS · React Native</span></div>
+          <h3>Tasklist API + App</h3>
+          <p>Gestão de tarefas com sessões autenticadas, persistência local no app e seletor de datas.</p>
+          <p class="stack">Express · MongoDB · bcrypt · JWT · AsyncStorage</p>
+          <div class="links"><a href="https://github.com/antoniohenriquep/Tasklist-api" target="_blank" rel="noopener">API</a><a href="https://github.com/antoniohenriquep/Tasklist-app" target="_blank" rel="noopener">App</a></div>
+        </article>
+        <article class="project" data-tags="node">
+          <div class="meta"><span>2024</span><span>JavaScript</span></div>
+          <h3>DevHouse</h3>
+          <p>Backend de reservas de imóveis com upload de fotos, validação de entrada e painel do anunciante.</p>
+          <p class="stack">Express · Mongoose · Yup · Multer</p>
+          <div class="links"><a href="https://github.com/antoniohenriquep/DevHouse" target="_blank" rel="noopener">Ver código</a></div>
+        </article>
+        <article class="project" data-tags="node">
+          <div class="meta"><span>2024</span><span>JavaScript</span></div>
+          <h3>Blog</h3>
+          <p>Aplicação web com área administrativa, categorias, postagens e login com Passport.</p>
+          <p class="stack">Express · Handlebars · Mongoose · Passport</p>
+          <div class="links"><a href="https://github.com/antoniohenriquep/Blog" target="_blank" rel="noopener">Ver código</a></div>
+        </article>
+        <article class="project" data-tags="">
+          <div class="meta"><span>colaboração</span><span>JavaScript</span></div>
+          <h3>CodeBô</h3>
+          <p>Jogo educativo de quebra-cabeça que transforma pilha, fila e lista em mecânicas. Participação em projeto acadêmico; o repositório é do grupo.</p>
+          <p class="stack">JavaScript · Canvas · Game design</p>
+          <div class="links"><a href="https://github.com/LuisAraujo/CodeBo-The-Game" target="_blank" rel="noopener">Ver projeto</a></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  </main>
+
+  <footer class="foot">
+    <span>Antonio Henrique Passos · Engenheiro de Software Backend</span>
+    <span class="mono">Feira de Santana, BA</span>
+  </footer>
+</div>
+
+<script>
+document.documentElement.lang = 'pt-BR';
+(function () {
+  var sc = document.querySelector('.arch-scroll');
+  var hint = document.querySelector('.arch-hint');
+  function fitArch() {
+    if (!sc) return;
+    var over = sc.scrollWidth - sc.clientWidth;
+    if (hint) hint.hidden = over <= 4;
+    if (over > 4 && !sc.dataset.touched) sc.scrollLeft = over / 2;
+  }
+  if (sc) {
+    sc.addEventListener('pointerdown', function () { sc.dataset.touched = '1'; });
+    window.addEventListener('resize', fitArch);
+    fitArch();
+  }
+
+  // Currículo: no viewer do Claude o download passa pela capacidade "downloads";
+  // fora dele (GitHub Pages, arquivo local) o link funciona normalmente.
+  var dl = null;
+  try {
+    if (window.claude && typeof window.claude.use === 'function') {
+      window.claude.use('downloads').then(function (d) { dl = d; }, function () {});
+    }
+  } catch (e) {}
+  function say(a, msg) {
+    var box = a.closest('.hero');
+    var s = box && box.querySelector('.cv-status');
+    if (!s) return;
+    s.textContent = msg;
+    if (msg) s.scrollIntoView({ block: 'nearest' });
+  }
+  document.querySelectorAll('.cv-link').forEach(function (a) {
+    var busy = false;
+    a.addEventListener('click', function (e) {
+      if (!dl) return;
+      e.preventDefault();
+      if (busy) return;
+      busy = true;
+      say(a, '');
+      fetch(a.getAttribute('href'))
+        .then(function (r) { if (!r.ok) throw { code: 'unavailable' }; return r.blob(); })
+        .then(function (b) { return dl.save({ filename: 'Curriculo-Antonio.pdf', data: b }); })
+        .catch(function (err) {
+          var code = err && err.code;
+          if (code === 'declined') return;
+          if (code === 'rate_limited') { say(a, 'Aguarde um instante e tente de novo.'); return; }
+          dl = null;
+          say(a, 'Não foi possível baixar por aqui. Clique de novo para abrir o PDF.');
+        })
+        .then(function () { busy = false; });
+    });
+  });
+
+  var buttons = document.querySelectorAll('.filters button');
+  var cards = document.querySelectorAll('#projects .project');
+  buttons.forEach(function (b) {
+    b.addEventListener('click', function () {
+      var f = b.dataset.f;
+      buttons.forEach(function (x) { x.setAttribute('aria-pressed', x === b ? 'true' : 'false'); });
+      cards.forEach(function (c) {
+        var tags = (c.dataset.tags || '').split(' ');
+        c.hidden = !(f === 'all' || tags.indexOf(f) !== -1);
+      });
+    });
+  });
+  document.querySelectorAll('.copy').forEach(function (b) {
+    b.addEventListener('click', function () {
+      var text = b.dataset.copy;
+      var done = function () {
+        b.textContent = 'copiado'; b.setAttribute('aria-label', 'E-mail copiado');
+        setTimeout(function () { b.textContent = 'copiar'; b.setAttribute('aria-label', 'Copiar e-mail'); }, 1600);
+      };
+      var fallback = function () {
+        var el = document.getElementById('email');
+        var r = document.createRange(); r.selectNodeContents(el);
+        var s = window.getSelection(); s.removeAllRanges(); s.addRange(r);
+      };
+      try {
+        navigator.clipboard.writeText(text).then(done, fallback);
+      } catch (e) { fallback(); }
+    });
+  });
+})();
+</script>
+</body>
+</html>
