@@ -151,7 +151,7 @@ p { margin: 0; }
 
 /* faixa de números */
 .facts {
-  display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); border-block: 1px solid var(--line);
+  display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); border-block: 1px solid var(--line);
 }
 .facts div { padding: 22px 20px; border-left: 1px solid var(--line); }
 .facts div:first-child { border-left: 0; padding-left: 0; }
@@ -245,9 +245,8 @@ footer.foot { margin-top: 72px; padding-top: 20px; border-top: 1px solid var(--l
   .portrait::before { inset: 8px -8px -8px 8px; }
   section.block { grid-template-columns: minmax(0, 1fr); gap: 16px; padding-block: 56px 0; }
   .skills { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .facts { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .facts div:nth-child(3) { border-left: 0; padding-left: 0; }
-  .facts div:nth-child(n+3) { border-top: 1px solid var(--line); }
+  .facts div { padding: 18px 14px; }
+  .facts div:first-child { padding-left: 0; }
 }
 @media (max-width: 640px) {
   body { padding-inline: 16px; }
@@ -300,7 +299,6 @@ footer.foot { margin-top: 72px; padding-top: 20px; border-top: 1px solid var(--l
   </section>
 
   <div class="facts" role="list">
-    <div role="listitem"><strong>3.000+</strong><span>clientes ativos na plataforma ACS que desenvolvi e mantive</span></div>
     <div role="listitem"><strong>CRM</strong><span>em microsserviços, que liderei tecnicamente na Softplus</span></div>
     <div role="listitem"><strong>5+</strong><span>anos de código no GitHub (desde 2021)</span></div>
     <div role="listitem"><strong>45</strong><span>repositórios, 29 deles públicos</span></div>
@@ -379,8 +377,8 @@ footer.foot { margin-top: 72px; padding-top: 20px; border-top: 1px solid var(--l
       <div class="domains">
         <div class="domain">
           <h3>Provedores de internet</h3>
-          <p>Plataforma ACS que desenvolvi e mantive na Softplus, usada por mais de 3.000 clientes ativos e com arquitetura preparada para 20.000+.</p>
-          <p class="entities">3.000+ clientes ativos <span>// Softplus</span></p>
+          <p>Plataforma ACS que desenvolvi e mantive na Softplus, com arquitetura preparada para mais de 20.000 clientes.</p>
+          <p class="entities">ACS <span>// Softplus</span></p>
         </div>
         <div class="domain">
           <h3>Integração com ERPs</h3>
@@ -410,7 +408,7 @@ footer.foot { margin-top: 72px; padding-top: 20px; border-top: 1px solid var(--l
             <p class="org"><strong>Softplus</strong> · remoto</p>
             <ul>
               <li>Liderança técnica do ecossistema de CRM em microsserviços (Java e Spring Boot), com comunicação assíncrona entre os serviços via RabbitMQ.</li>
-              <li>Desenvolvimento e manutenção de uma plataforma ACS para provedores de internet, com mais de 3.000 clientes ativos e arquitetura preparada para 20.000+.</li>
+              <li>Desenvolvimento e manutenção de uma plataforma ACS para provedores de internet, com arquitetura preparada para mais de 20.000 clientes.</li>
               <li>Integração com os ERPs de telecom Hubsoft e IXC, com transações distribuídas para manter os dados consistentes.</li>
               <li>Migrações de banco com Flyway, testes unitários e de integração com JUnit e Mockito, code review e mentoria técnica do time.</li>
             </ul>
